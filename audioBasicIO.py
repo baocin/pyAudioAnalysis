@@ -35,7 +35,7 @@ def convertDirMP3ToWav(dirName, Fs, nC, useMp3TagsAsName = False):
         else:
             wavFileName = f.replace(".mp3",".wav")      
         command = "avconv -i \"" + f + "\" -ar " +str(Fs) + " -ac " + str(nC) + " \"" + wavFileName + "\"";
-        print command
+        print(command)
         os.system(command.decode('unicode_escape').encode('ascii','ignore').replace("\0",""))
 
 def convertFsDirWavToWav(dirName, Fs, nC):
@@ -95,7 +95,7 @@ def readAudioFile(path):
                 return (-1, -1)
             Fs = audiofile.frame_rate
             x = []
-            for chn in xrange(audiofile.channels):
+            for chn in range(audiofile.channels):
                 x.append(data[chn::audiofile.channels])
             x = numpy.array(x).T
         else:
